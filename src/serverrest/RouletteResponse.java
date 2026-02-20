@@ -10,14 +10,14 @@ package serverrest;
  */
 public class RouletteResponse {
  public String giocata;
- public Integer numero;
+ public int numero;
  public boolean vittoria;
     
     // Costruttore vuoto necessario per GSON
     public RouletteResponse() {
     }
 
-    public RouletteResponse(String giocata, Integer numero, boolean vittoria) {
+    public RouletteResponse(String giocata, int numero, boolean vittoria) {
         this.giocata = giocata;
         this.numero = numero;
         this.vittoria = vittoria;
@@ -31,11 +31,11 @@ public class RouletteResponse {
         this.giocata = giocata;
     }
 
-    public Integer getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
