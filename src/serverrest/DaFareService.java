@@ -13,18 +13,17 @@ public class DaFareService {
     /**
      * Esegue l'operazione matematica richiesta
      * 
-     * @param 
-     * @param 
-     * @param 
-     * @return 
+     * @param numero numero uscito sulla roulette
+     * @param giocata giocata del giocatore : "PARI, DISPARI"
+     * @return Il risultato della giocata del giocatore
      * @throws IllegalArgumentException se ...
      */
-    public static double logicaDiCalcolo() 
+    public static double logicaDiCalcolo(int numero, String giocata) 
             throws IllegalArgumentException {
         
         // Controllo se i parametri passati sono validi
-                if (!parametriValidi()) {
-            throw new IllegalArgumentException("Operatore non può essere vuoto");
+                if (numero>=0 || numero!= 0 || giocata.trim().isEmpty()) {
+            throw new IllegalArgumentException("numero e giocata non possono essere vuoti");
         }
         
         try {
