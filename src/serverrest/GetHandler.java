@@ -24,7 +24,7 @@ import java.util.Map;
  */
 
 
-public class DaFareGetHandler implements HttpHandler {
+public class GetHandler implements HttpHandler {
     
     // Istanza Gson configurata per pretty printing
     private final Gson gson = new GsonBuilder()
@@ -45,20 +45,23 @@ public class DaFareGetHandler implements HttpHandler {
             Map<String, String> parametri = estraiParametri(exchange.getRequestURI().getQuery());
             
             // Validazione parametri
-            if (validazioneParametri(parametri)) {
+            if (!parametri.containsKey("numero") || 
+                !parametri.containsKey("giocata") ) {
                 inviaErrore(exchange, 400, 
-                    "Parametri mancanti. Necessari: operando1, operando2, operatore");
-                return;
+                    "Parametri mancanti. Necessari: numero, giocata");
+                
             }
             
-            // Parsing dei valori
+            int numero = int.tryParse(parametri.get("numero"));
+            String giocata = parametri.get("giocata");
             
             
             // Esegue la logica di calcolo
-            double risultato = RouletteService.logicaDiCalcolo();
+            boolean vittoria = RouletteService.ControlloVittoria(numero,giocata);
             
             // Crea l'oggetto risposta
             RouletteResponse response = new RouletteResponse(
+                    giocata,numero,vittoria
             );
             
             // GSON converte automaticamente l'oggetto Java in JSON
