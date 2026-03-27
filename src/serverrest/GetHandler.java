@@ -52,7 +52,7 @@ public class GetHandler implements HttpHandler {
                 
             }
             
-            int numero = int.tryParse(parametri.get("numero"));
+            int numero = Integer.parseInt(parametri.get("numero"));
             String giocata = parametri.get("giocata");
             
             
