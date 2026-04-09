@@ -33,8 +33,8 @@ public class ServerRest {
             // Crea il server sulla porta specificata
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
             
-            server.createContext("http://localhost:8080/api/roulette/paridispari/post", new PostHandler());
-            server.createContext("http://localhost:8080/api/roulette/paridispari/get?giocata=DISPARI&numero=12", new GetHandler());
+            server.createContext("/api/roulette/paridispari/post", new PostHandler());
+            server.createContext("/api/roulette/paridispari/get", new GetHandler());
            
             
             // Endpoint di benvenuto
