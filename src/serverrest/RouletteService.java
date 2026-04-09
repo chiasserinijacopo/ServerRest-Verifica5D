@@ -22,7 +22,7 @@ public class RouletteService {
             throws IllegalArgumentException {
         
         // Controllo se i parametri passati sono validi
-                if (numero<0 && numero <36 || numero== 0 || giocata.trim().isEmpty()) {
+                if (numero < 0 || numero > 36 || giocata == null || giocata.trim().isEmpty()) {
             throw new IllegalArgumentException("numero e giocata non possono essere vuoti e il numero deve essere tra 0 e 36");
         }
         int numero1 = numero;        
@@ -30,9 +30,7 @@ public class RouletteService {
         
         try {
             if (numero1 == 0){
-                if ( "0".equals(giocata1)){
-                    return true;  
-                }else {return false;}
+                 {return false;}
             }
             int modulo = numero1 % 2;
            
@@ -44,6 +42,7 @@ public class RouletteService {
                    else if("DISPARI".equals(giocata1)){
                        return true; 
                    };
+                   break;
                 case 0:
                     if ( "PARI".equals(giocata1)) {
                        return true;
@@ -51,6 +50,7 @@ public class RouletteService {
                    else if("DISPARI".equals(giocata1)){
                        return false; 
                    };
+                   break;
                
             }
             
