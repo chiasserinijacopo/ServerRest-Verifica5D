@@ -49,7 +49,7 @@ public class GetHandler implements HttpHandler {
                 !parametri.containsKey("giocata") ) {
                 inviaErrore(exchange, 400, 
                     "Parametri mancanti. Necessari: numero, giocata");
-                
+                return;
             }
             
             int numero = Integer.parseInt(parametri.get("numero"));
