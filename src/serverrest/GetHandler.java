@@ -78,10 +78,24 @@ public class GetHandler implements HttpHandler {
         }
     }
 
-    // Validazione dei parametri (da implementare)
+    // Validazione dei parametri
     private boolean validazioneParametri(Map<String, String> parametri) {
-        
+    if (!parametri.containsKey("giocata") || !parametri.containsKey("numero")) {
         return false;
+    }
+    String giocata = parametri.get("giocata").toUpperCase().trim();
+    if (!giocata.equals("PARI") && !giocata.equals("DISPARI")) {
+        return false;
+    }
+    try {
+        int numero = Integer.parseInt(parametri.get("numero"));
+        if (numero < 0 || numero > 36) {
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        return false;
+    }
+    return true;
     }
     
     /**
