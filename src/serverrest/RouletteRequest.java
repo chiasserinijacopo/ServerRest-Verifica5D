@@ -10,13 +10,13 @@ package serverrest;
  */
 public class RouletteRequest {
     public String giocata;
-    public int numero;  
+    public String numero;  
     
     // Costruttore vuoto necessario per GSON
     public RouletteRequest() {
     }
     
-    public RouletteRequest(String giocata, int numero) {  
+    public RouletteRequest(String giocata, String numero) {  
         this.giocata = giocata;
         this.numero = numero;
     }
@@ -30,17 +30,17 @@ public class RouletteRequest {
         this.giocata = giocata;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
     @Override
     public String toString() {
-        return "RouletteRequest{" + "giocata=" + giocata + ", numero=" + numero + '\'' +'}';
+        return "RouletteRequest{ giocata=" + giocata + ", numero=" + numero + '}';
     }
     
 }
