@@ -58,7 +58,7 @@ public class PostHandler implements HttpHandler {
                 return;
             }
             
-            if (validazioneParametri(request)) {
+            if (!validazioneParametri(request)) {
                 inviaErrore(exchange, 400, "Operatore mancante o vuoto");
                 return;
             }
@@ -89,8 +89,20 @@ public class PostHandler implements HttpHandler {
     
     // Validazione dei parametri (da implementare)
     private boolean validazioneParametri(RouletteRequest request) {
+        if (request.getGiocata() == null || request.getGiocata().trim().isEmpty()) {
+            return false;
+        }
         
-        return false;
+        String giocata = request.getGiocata().toUpperCase().trim();
+        
+        if (!giocata.equals("PARI") && !giocata.equals("DISPARI")) {
+            return false;
+        }
+        
+        if (request.getNumero() < 0 || request.getNumero() > 36) {
+            return false;
+        }
+        return true;
     }
 
     /**
