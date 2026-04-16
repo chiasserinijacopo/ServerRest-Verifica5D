@@ -44,12 +44,10 @@ public class GetHandler implements HttpHandler {
             // Estrae i parametri dalla query string
             Map<String, String> parametri = estraiParametri(exchange.getRequestURI().getQuery());
             
-            // Validazione parametri
-            if (!parametri.containsKey("numero") || 
-                !parametri.containsKey("giocata") ) {
+            if (!validazioneParametri(parametri)) {
                 inviaErrore(exchange, 400, 
-                    "Parametri mancanti. Necessari: numero, giocata");
-                return;
+            "Valori non validi. Giocata deve essere PARI o DISPARI, numero tra 0 e 36");
+            return;
             }
             
             int numero = Integer.parseInt(parametri.get("numero"));
