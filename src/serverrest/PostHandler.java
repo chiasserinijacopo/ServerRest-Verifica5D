@@ -62,14 +62,14 @@ public class PostHandler implements HttpHandler {
                 inviaErrore(exchange, 400, "Operatore mancante o vuoto");
                 return;
             }
-            
+            int numero = Integer.parseInt(request.getNumero());
             // Chiama la logica di calcolo DA FARE
-            boolean vittoria = RouletteService.ControlloVittoria(request.getNumero(), request.getGiocata());
+            boolean vittoria = RouletteService.ControlloVittoria(numero, request.getGiocata());
             
             // Crea l'oggetto risposta DA FARE
            RouletteResponse response = new RouletteResponse(
                    request.getGiocata(),
-                   request.getNumero(),
+                   numero,
                    vittoria
             );
             
@@ -89,6 +89,7 @@ public class PostHandler implements HttpHandler {
     
     // Validazione dei parametri (da implementare)
     private boolean validazioneParametri(RouletteRequest request) {
+        int numero = Integer.parseInt(request.getNumero());
         if (request.getGiocata() == null || request.getGiocata().trim().isEmpty()) {
             return false;
         }
@@ -99,7 +100,7 @@ public class PostHandler implements HttpHandler {
             return false;
         }
         
-        if (request.getNumero() < 0 || request.getNumero() > 36) {
+        if (numero < 0 || numero > 36) {
             return false;
         }
         return true;
