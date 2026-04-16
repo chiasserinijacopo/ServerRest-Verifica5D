@@ -64,10 +64,13 @@ public class PostHandler implements HttpHandler {
             }
             
             // Chiama la logica di calcolo DA FARE
-           
+            boolean vittoria = RouletteService.ControlloVittoria(request.getNumero(), request.getGiocata());
             
             // Crea l'oggetto risposta DA FARE
            RouletteResponse response = new RouletteResponse(
+                   request.getGiocata(),
+                   request.getNumero(),
+                   vittoria
             );
             
             // GSON converte automaticamente l'oggetto Java in JSON
